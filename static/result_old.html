@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明甄谛听 泛用式AI参与度检测系统</title>
+</head>
+<body>
+    <h1>检测结果</h1>
+    <p>整体AI参与度: {{ prediction.whole_ai_prob }}% </p>
+    <p>整体真实度: {{ prediction.whole_real_prob }}% </p>
+
+    <h2>详细信息</h2>
+    <ul>
+        {% for detail in prediction.details %}
+        <li>
+            Text {{ detail.text_number }}: {{ detail.text }} <br>
+            AI生成概率: {{ detail.AI_probability }}% <br>
+            真实概率: {{ detail.real_probability }}%
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

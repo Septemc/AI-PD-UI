@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明甄谛听 泛用式AI参与度检测系统</title>
+</head>
+<body>
+    <h1>上传文件和选择模型</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".docx">
+        <select name="model_path">
+            <option value="logs/models/model_1.pth">Model 1</option>
+            <option value="logs/models/model_2.pth">Model 2</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
