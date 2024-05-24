@@ -38,7 +38,7 @@ def text_home():
 
 @app.route('/image', methods=['GET', 'POST'])
 def image_home():
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'GET':
         file = request.files['file']
         model_path = 'weights/picture/model_ac=0.846.pth'
         # 临时保存文件
