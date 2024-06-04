@@ -23,7 +23,7 @@ def text_home():
         elif '.pdf' in file.filename:
             prediction_result = pdf_detection(upload_file_path, model_path)
         else:
-            return "Error: 仅支持.txt、.doc和.pdf格式的文件。请上传正确格式的文件。"
+            return "Error: file"
         return prediction_result
 
 

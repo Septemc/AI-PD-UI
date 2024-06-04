@@ -16,8 +16,9 @@ def txt_detection(file_path, model_path):
     target_shape = (vocab_size, 300)
 
     # 加载模型文件
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TextCNN(embedding_dim, num_filters, output_dim)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=device))
 
     # 调用函数进行读取和分段处理
     paragraphs = read_and_segment_txt(file_path)
@@ -89,9 +90,11 @@ def doc_detection(file_path, model_path):
     output_dim = 2
     target_shape = (vocab_size, 300)
 
+
     # 加载模型文件
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TextCNN(embedding_dim, num_filters, output_dim)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=device))
 
     doc = Document(file_path)
     text_chunks = []
@@ -162,8 +165,9 @@ def pdf_detection(file_path, model_path):
     target_shape = (vocab_size, 300)
 
     # 加载模型文件
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = TextCNN(embedding_dim, num_filters, output_dim)
-    model.load_state_dict(torch.load(model_path))
+    model.load_state_dict(torch.load(model_path, map_location=device))
 
     doc = Document(file_path)
     text_chunks = []

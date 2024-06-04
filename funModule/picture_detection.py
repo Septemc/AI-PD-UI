@@ -1,13 +1,7 @@
-import os
-import sys
 import torch
 import torch.nn
-import argparse
-import numpy as np
 import json
 import torchvision.transforms as transforms
-import matplotlib.pyplot as plt
-import torchvision.datasets as datasets
 from PIL import Image
 from models.Nets import resnet50
 
@@ -15,12 +9,10 @@ from models.Nets import resnet50
 def pic_detection(file_path, model_path, crop=448):
     logs_detection = []
     model = resnet50()
-    state_dict = torch.load(model_path, map_location='cpu')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    state_dict = torch.load(model_path, map_location=device)
     model.load_state_dict(state_dict)
-    if torch.cuda.is_available():
-        device = 'cuda'
-    else:
-        device = 'cpu'
+
     model.to(device)
     model.eval()
 
@@ -44,7 +36,7 @@ def pic_detection(file_path, model_path, crop=448):
         in_tens = img.unsqueeze(0)
         in_tens = in_tens.to(device)
         prob = model(in_tens).sigmoid()
-        res = torch.max(prob).item() * 100
+        res = prob[0, 0].item() * 100
         res = round(res, 3)
         # .sigmoid().item() * 100
 
