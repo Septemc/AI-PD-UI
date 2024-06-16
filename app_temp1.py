@@ -42,7 +42,7 @@ def image_home():
         file = request.files['file']
         model_path = 'weights/picture/model_ac=0.846.pth'
         # 临时保存文件
-        upload_file_path = os.path.join('uploads/picture', file.filename)
+        upload_file_path = os.path.join('uploads/image', file.filename)
         file.save(upload_file_path)
         prediction_result = pic_detection(upload_file_path, model_path)
         return make_response(prediction_result)

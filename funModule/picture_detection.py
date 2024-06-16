@@ -50,4 +50,4 @@ def pic_detection(file_path, model_path, crop=448):
 
 
 # if __name__ == '__main__':
-#     pic_detection('../uploads/picture/test3.png', '../weights/picture/blur_jpg_prob0.5.pth', crop=256)
+#     pic_detection('../uploads/image/test3.png', '../weights/image/blur_jpg_prob0.5.pth', crop=256)
